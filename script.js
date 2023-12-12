@@ -42,7 +42,7 @@ function setPosition(element, position) {
 }
 
 // Testing draw function
-draw();
+// draw();
 
 // Draw a food piece on the board
 function drawFood() {
@@ -103,4 +103,36 @@ function startGame()  {
     gameStarted = true; // Keep track of a running game
     instructionText.style.display = 'none'; // Hides instructions after start of game
     logo.style.display = 'none'; // Hides logo after start of game
+    gameInterval = setInterval(() => {
+        move();
+        // checkCollision();
+        draw();
+    }, gameSpeedDelay);
 }
+
+// Keypress event listener to start game
+function handleKeyPress(event) {
+    if (
+        (!gameStarted && event.code === 'Space') ||
+        (!gameStarted && event.key === ' ')
+    )   {
+        startGame();
+    } else {
+        switch(event.key) {
+            case 'ArrowUp':
+                direction = 'up';
+                break;
+            case 'ArrowDown':
+                direction = 'down';
+                break;
+            case 'ArrowLeft':
+                direction = 'left';
+                break;
+            case 'ArrowRight':
+                direction = 'right';
+                break;
+        }
+    }
+}
+
+document.addEventListener('keydown', handleKeyPress);
