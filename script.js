@@ -45,9 +45,6 @@ function setPosition(element, position) {
     element.style.gridRow = position.y;
 }
 
-// Testing draw function
-// draw();
-
 // Draw a food piece on the board
 function drawFood() {
     if (gameStarted) {
@@ -85,7 +82,6 @@ function move() {
     snake.unshift(head);
 
     // snake.pop();
-
     if (head.x === food.x && head.y === food.y) {
         food = generateFood();
         increaseSpeed();
@@ -99,12 +95,6 @@ function move() {
         snake.pop();
     }
 }
-
-// // Test motion of snake after adding all 'move' functionality
-// setInterval(() => {
-//     move(); // Move first
-//     draw(); // Then draw the new position again
-// }, 200);
 
 // Starts a new game with randomized food and standard snake position
 function startGame()  {
